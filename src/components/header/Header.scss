@@ -1,1 +1,32 @@
+header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 32px;
+	padding: 0.5rem;
 
+	span {
+		flex: 1 0 auto;
+	}
+
+	h2 {
+		flex: 0 0 auto;
+	}
+}
+
+.header__back {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	text-decoration: none;
+	color: #282828;
+
+	img {
+		width: 20px;
+		height: 20px;
+		margin-right: 0.25rem;
+	}
+}
