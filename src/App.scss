@@ -1,12 +1,8 @@
 .App {
   display: block;
   position: relative;
-  max-width: 800px;
-  min-width: 100%;
-
-  .sub-app {
-    padding: 0.5rem;
-  }
+  max-width: 640px;
+  width: 100%;
 }
 
 .App .lifeapp__app-list {
