@@ -7,6 +7,7 @@ import Finance from './sub-apps/finance/Finance.js';
 import Fitness from './sub-apps/fitness/Fitness.js';
 import Notes from './sub-apps/notes/Notes.js';
 import Reminders from './sub-apps/reminders/Reminders.js';
+import Store from './Store.js';
 class App extends Component {
   state = {
     activeApp: ""
