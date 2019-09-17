@@ -3,6 +3,7 @@ import './../../../misc/styles/layout.scss';
 import './BasicInterface.scss';
 import { isObject } from './../../../misc/js/utilities.js';
 import closeIcon from './../../../misc/icons/close-icon__chocolate.svg';
+import Store from './../../../Store.js';
 
 class BasicInterface extends Component {
   state = {
@@ -12,7 +13,8 @@ class BasicInterface extends Component {
     calories : 0, // total calories for the day
     entries: [], // list of calorie 
     activePopupEntry: null, // should be object when set
-    activePopupEntryModified: false
+    activePopupEntryModified: false,
+    store: Store
   }
 
   // methods
@@ -216,6 +218,11 @@ class BasicInterface extends Component {
 
   componentWillMount() {
     const todaysDate = this.getTodaysDate();
+
+    // use IndexedDB for store
+    console.log(this.state.store);
+    const store = this.state.store;
+    store.initStore();
 
     this.setState( prevState => ({
       today: this.getToday(),

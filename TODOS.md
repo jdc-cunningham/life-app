@@ -6,3 +6,5 @@
 - Calorie Counter(Fitness)
   - replace sessionStorage store of calorie counter with IndexedDB
   - replace componentWillMount with something else for Calorie Counter
+- Add way to delete store
+  - use prompt type yes/no then actually delete, put it on home view

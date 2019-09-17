@@ -10,7 +10,8 @@ import Reminders from './sub-apps/reminders/Reminders.js';
 import Store from './Store.js';
 class App extends Component {
   state = {
-    activeApp: ""
+    activeApp: "",
+    store: Store,
   }
 
   render() {
