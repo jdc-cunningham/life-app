@@ -82,6 +82,21 @@ class BasicInterface extends Component {
     this.calorieAddBtn.current.removeAttribute( 'disabled' );
   }
 
+  updateStore(keyPath, storeObj) {
+    const promiseStore = new Promise((resolve, reject) => {
+      console.log('promise');
+      console.log(keyPath);
+      console.log(storeObj);
+      Store.updateStore(keyPath, storeObj);
+      resolve("yes");
+      reject("no"); // man...
+    });
+
+    promiseStore.then(() => {
+      this.calorieAddBtn.current.removeAttribute( 'disabled' );
+    });
+  }
+
   generateUniqueId() {
     // use timestamp
     return Date.now();
@@ -127,7 +142,8 @@ class BasicInterface extends Component {
       activePopupEntryModified: false
     };
 
-    this.updateSessionStorage( newState );
+    // this.updateSessionStorage( newState );
+    this.updateStore( 'calories', newState );
     this.clearInputs();
     this.setState( prevState => (newState) );
   }
@@ -178,8 +194,9 @@ class BasicInterface extends Component {
       activePopupEntryModified: false,
       activePopupEntry: null
     };
-    this.updateSessionStorage( newState );
-    this.setState( prevState => ( newState ));
+    // this.updateSessionStorage( newState );
+    this.updateStore( 'calories', newState );
+    this.setState( prevState => ( newState )); // this should be called by updateStore promise resolution
   }
 
   closePopup() {

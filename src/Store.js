@@ -17,7 +17,6 @@ Store.initStore = () => {
     dbName,
     dbVer
   } = Store;
-  console.log(db);
   if (db) {
     var request = window.indexedDB.open(dbName, dbVer);
     request.onsuccess = (event) => {
@@ -50,13 +49,14 @@ Store.setupStorage = (Utilities) => {
     dbName,
     dbVer
   } = Store;
-  console.log(dbName);
   var request = window.indexedDB.open(dbName, dbVer);
+
   request.onsuccess = (event) => {
-      db = event.target.result;
+      Store.db = event.target.result;
       // loadAmounts();
       console.log('load event');
   };
+
   request.onerror = (event) => {
       alert('Failed to open IndexedDB database')
   };
@@ -88,11 +88,31 @@ Store.setupStorage = (Utilities) => {
 };
 
 Store.getStore = () => {
-  
+
 };
 
-Store.updateStore = () => {
-
+Store.updateStore = (keyPath, storeObj) => {
+  console.log(keyPath);
+  console.log(storeObj);
+  // staright outta MDN
+  const db = Store.db;
+  const transaction = db.transaction([keyPath], "readwrite");
+  transaction.oncomplete = function(event) {
+    console.log("All done!");
+    return true;
+  };
+  
+  transaction.onerror = function(event) {
+    // Don't forget to handle errors! ha! something broke but you can't fix it
+    return false;
+  };
+  
+  var objectStore = transaction.objectStore(keyPath);
+  var request = objectStore.add(storeObj);
+  request.onsuccess = function(event) {
+    console.log('saved');
+    return true;
+  };
 };
 
 export default Store;
