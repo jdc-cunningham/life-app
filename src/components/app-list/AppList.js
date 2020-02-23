@@ -2,22 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AppList = () => {
-  const subApps = [
-    {
-      appName: "finance"
-    },
-    {
-      appName: "fitness"
-    },
-    {
-      appName: "notes"
-    },
-    {
-      appName: "reminders"
-    }
-  ];
+  const subApps = ["diet", "finance", "fitness", "notes", "reminders"];
   const appTiles = subApps.map((subApp, index) => {
-    return <Link key={index} to={"/" + subApp.appName}><span>{subApp.appName}</span></Link>;
+    return <Link key={index} to={"/" + subApp}><span>{subApp}</span></Link>;
   });
 
   return (
