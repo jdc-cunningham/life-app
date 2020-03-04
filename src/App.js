@@ -9,6 +9,7 @@ import Fitness from './sub-apps/fitness/Fitness.js';
 import Notes from './sub-apps/notes/Notes.js';
 import Reminders from './sub-apps/reminders/Reminders.js';
 import Diet from './sub-apps/diet/Diet.js';
+import DebtGrowth from './sub-apps/debt-growth/DebtGrowth.js';
 
 const App = () => {
 	const RouterHeader = withRouter(Header);
@@ -22,6 +23,7 @@ const App = () => {
 				<Route path="/fitness" render={(props) => (<Fitness />)} />
 				<Route path="/notes" render={(props) => (<Notes />)} />
 				<Route path="/reminders" render={(props) => (<Reminders />)} />
+				<Route path="/debt-growth" render={(props) => (<DebtGrowth />)} />
 			</Router>
 		</div>
 	);

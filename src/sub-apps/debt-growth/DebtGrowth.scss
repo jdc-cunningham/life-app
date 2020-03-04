@@ -1,0 +1,31 @@
+.lifeapp__debt-growth {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5rem;
+
+    .debt-growth__nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 0.5rem;
+    }
+
+    .debt-growth__gear {
+        width: 20px;
+        height: 20px;
+    }
+
+    .debt-growth__initial-fields {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}

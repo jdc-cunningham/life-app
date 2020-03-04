@@ -52,3 +52,7 @@
     }
   }
 }
+
+.App .sub-app {
+  min-height: calc(100vh - 40px);
+}

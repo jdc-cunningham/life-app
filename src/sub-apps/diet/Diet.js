@@ -6,7 +6,6 @@ const Diet = (props) => {
   	const [storage, setStorage] = useState(null);
 
 	const setupStorage = () => {
-		console.log('ss');
 		const db = new Dexie("LifeAppCalorieCounter");
 		db.version(1).stores({
 			days: "++id,day,date,calorieCap", // the calorieCap value should ideally just be stored by itself, not in rows but I guess it could change

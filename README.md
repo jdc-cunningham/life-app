@@ -8,3 +8,5 @@ This app was made with create-react-app
 - Notes
 - Reminders
 - Bonus: "Assistant"
+
+Icons generally come from [uxwing](https://uxwing.com/)
