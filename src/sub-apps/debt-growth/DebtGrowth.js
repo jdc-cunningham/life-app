@@ -76,7 +76,7 @@ const DebtGrowth = (props) => {
         if (debtDetails) {
             const newBalance = (( ((updatedBalance * 100) + centsPerSecondGrowth) ) / 100);
             updatedBalance = newBalance;
-            document.querySelector('.debt-growth__live-display').innerText = `$${tresCommas(updatedBalance)}`;
+            document.querySelector('.debt-growth__live-display').innerText = `$${tresCommas(updatedBalance)}`; // you should be horse whipped
         }
     };
 
