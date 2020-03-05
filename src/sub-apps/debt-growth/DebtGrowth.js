@@ -72,11 +72,19 @@ const DebtGrowth = (props) => {
         return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    function tresCommasMasSigFigs( num ) {
+        return num.toLocaleString('en-US', { minimumFractionDigits: 5, maximumFractionDigits: 5 });
+    }
+
     const workerCallback = (secGained) => {
         if (debtDetails) {
             const newBalance = (( ((updatedBalance * 100) + centsPerSecondGrowth) ) / 100);
             updatedBalance = newBalance;
-            document.querySelector('.debt-growth__live-display').innerText = `$${tresCommas(updatedBalance)}`; // you should be horse whipped
+            const displayTarget = document.querySelector('.debt-growth__live-display');
+            if (displayTarget) {
+                // yeah XSS potential vulnerability but self data
+                displayTarget.innerHTML = `init: $${tresCommas(debtDetails.balance)} <br /> current: $${tresCommas(updatedBalance)} <br /> growth in seconds: $${tresCommasMasSigFigs(updatedBalance)}`; // you should be horse whipped
+            }
         }
     };
 
