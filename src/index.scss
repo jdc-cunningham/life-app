@@ -1,4 +1,6 @@
 body {
+  overscroll-behavior-y: contain; // prevents pull refresh breaks soft routes
+  
   * {
     box-sizing: border-box;
     font-family: 'Dosis', sans-serif;

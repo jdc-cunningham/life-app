@@ -67,12 +67,14 @@ const DebtGrowth = (props) => {
     }
 
     // straight outta SO
-    // https://stackoverflow.com/questions/6784894/add-commas-or-spaces-to-group-every-three-digits
+    // https://stackoverflow.com/questions/6784894/add-commas-or-spaces-to-group-every-three-digits // this acts weird the rounding changes
+    // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
     function tresCommas( num ) {
-        return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return parseFloat(num).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     function tresCommasMasSigFigs( num ) {
+        const numParts = num.toString().split('.');
         return num.toLocaleString('en-US', { minimumFractionDigits: 5, maximumFractionDigits: 5 });
     }
 
@@ -106,11 +108,15 @@ const DebtGrowth = (props) => {
         if (debtDetails) {
             centsPerSecondGrowth = getInterestGrowthPerSecond(parseFloat(debtDetails.balance), parseFloat(debtDetails.interest));
             updatedBalance = parseFloat(debtDetails.balance) + getElapsedTimeGrowth();
+            console.log(props);
             if (window.Worker) {
-                var workerClock = new Worker(workerScript);
-                workerClock.onmessage = (msg) => {
-                    workerCallback(msg.data);
-                };
+                if (!props.debtGrowthWorker) { // worker still exists when leaving sub app
+                    var workerClock = new Worker(workerScript);
+                    workerClock.onmessage = (msg) => {
+                        workerCallback(msg.data);
+                    };
+                    props.updateDebtGrowthWorker(true);
+                }
             } else {
                 alert('Web worker not available');
             }

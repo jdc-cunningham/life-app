@@ -5,6 +5,7 @@ const worker = () => {
 
     function timedCount() {
         setTimeout(() => {
+            console.log('worker file');
             i = i + 1;
             postMessage(i);
             timedCount();

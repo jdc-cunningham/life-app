@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 import './App.scss';
 
@@ -13,6 +13,8 @@ import DebtGrowth from './sub-apps/debt-growth/DebtGrowth.js';
 
 const App = () => {
 	const RouterHeader = withRouter(Header);
+	const [debtGrowthWorker, updateDebtGrowthWorker] = useState(false);
+
 	return (
 		<div className="App">
 			<Router>
@@ -23,7 +25,9 @@ const App = () => {
 				<Route path="/fitness" render={(props) => (<Fitness />)} />
 				<Route path="/notes" render={(props) => (<Notes />)} />
 				<Route path="/reminders" render={(props) => (<Reminders />)} />
-				<Route path="/debt-growth" render={(props) => (<DebtGrowth />)} />
+				<Route path="/debt-growth" render={(props) => (
+					<DebtGrowth debtGrowthWorker={ debtGrowthWorker } updateDebtGrowthWorker={ updateDebtGrowthWorker } />
+				)} />
 			</Router>
 		</div>
 	);
